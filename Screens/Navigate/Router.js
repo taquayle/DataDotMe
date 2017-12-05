@@ -10,10 +10,18 @@ import React from 'react'
 //  SCREENS
 import { HomeScreen } from '../Home';
 import { SplashScreen } from '../Splash';
+import { WorkHomeScreen} from '../Recorder/Workout/WorkHome'
+import { MoneyHomeScreen} from '../Recorder/Money/MoneyHome'
+import { WeightHomeScreen } from '../Recorder/Weight/WeightHome'
+import { FoodHomeScreen } from '../Recorder/Food/FoodHome'
 
 export const Router = StackNavigator({
   Splash: { screen: SplashScreen, },
   Home: { screen: HomeScreen, },
+  FoodHome: { screen: FoodHomeScreen, },
+  MoneyHome: { screen: MoneyHomeScreen, },
+  WeightHome: { screen: WeightHomeScreen, },
+  WorkHome: { screen: WorkHomeScreen, },
   },
   navigation = {
     headerMode: 'none'

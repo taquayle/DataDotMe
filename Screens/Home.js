@@ -8,6 +8,7 @@ import React from 'react';
 import { Router} from './Navigate/Router'
 import Style  from './Styles/Style'
 import { Text, View, StyleSheet, Image, BackHandler, Platform} from 'react-native'
+import { Button, SideMenu, List, ListItem, Icon, Header, Divider } from 'react-native-elements'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -28,17 +29,62 @@ export class HomeScreen extends React.Component{
 
 
   render() {
+
+    const { navigate } = this.props.navigation;
+
     return (
-      <View style={Style.container}>
-        <Text style={Style.title}>
-          Welcome to React Native!
-        </Text>
-        <Text style={Style.text}>
-          To get started, edit App.js
-        </Text>
-        <Text style={Style.text}>
-          {instructions}
-        </Text>
+      <View style={Style.grid}>
+        <View style={Style.col}>
+
+            <View style={Style.row1}>
+                <Button
+                  large
+                  icon={{name: 'trending-up', size: 32}}
+                  buttonStyle={{ borderRadius: 40, marginVertical: 10}}
+                  textStyle={{textAlign: 'center'}}
+                  title={`Workout`}
+                  onPress={() => navigate('WorkHome')}
+                />
+              </View>
+
+            <View style={Style.row2}>
+              <Button
+                large
+                icon={{name: 'trending-up', size: 32}}
+                buttonStyle={{ borderRadius: 40, marginVertical: 10}}
+                textStyle={{textAlign: 'center'}}
+                title={`Food`}
+                onPress={() => navigate('FoodHome')}
+              />
+            </View>
+
+        </View>
+
+        <View style={Style.col}>
+
+            <View style={Style.row3}>
+              <Button
+                large
+                icon={{name: 'trending-up', size: 32}}
+                buttonStyle={{ borderRadius: 40, marginVertical: 10}}
+                textStyle={{textAlign: 'center'}}
+                title={`Money`}
+                onPress={() => navigate('MoneyHome')}
+              />
+            </View>
+
+            <View style={Style.row4}>
+              <Button
+                large
+                icon={{name: 'trending-up', size: 32}}
+                buttonStyle={{ borderRadius: 40, marginVertical: 10}}
+                textStyle={{textAlign: 'center'}}
+                title={`Weight`}
+                onPress={() => navigate('WeightHome')}
+              />
+            </View>
+
+        </View>
       </View>
     );
   }
