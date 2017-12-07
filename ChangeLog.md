@@ -14,3 +14,7 @@
 ## * Added FoodHome to router/app
 ## * Added MoneyHome to router/app
 ## * Added Workout to router/app
+
+#12/6/2017
+## * Installed react-native-victory
+## * Installed react-native-svg@5.5.1 as 6.0 clashes with react-native 54.1

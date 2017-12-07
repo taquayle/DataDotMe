@@ -14,40 +14,29 @@ export default StyleSheet.create({
   },
   grid: {
     flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
     backgroundColor: '#000000',
     flexDirection: 'row'
   },
   col: {
     flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
     backgroundColor: '#000000',
     flexDirection: 'column'
   },
   row1: {
     flex: 1,
-    //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'red',
   },
   row2: {
     flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
     backgroundColor: 'green',
   },
   row3: {
     flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
     backgroundColor: 'blue',
   },
   row4: {
     flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
     backgroundColor: 'yellow',
   },
   title: {
