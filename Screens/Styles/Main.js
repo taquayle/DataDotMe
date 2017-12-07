@@ -9,9 +9,22 @@ export default StyleSheet.create({
   wrapper: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  header:{
+    flex: .08,
+    alignItems: 'center',
+  },
+  body:{
+    flex: .52,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  feed:{
+    flex: .4,
+    alignItems: 'center',
+  },
+
   grid: {
     flex: 1,
     backgroundColor: '#000000',
@@ -22,22 +35,9 @@ export default StyleSheet.create({
     backgroundColor: '#000000',
     flexDirection: 'column'
   },
-  row1: {
+  cell:{
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'red',
-  },
-  row2: {
-    flex: 1,
-    backgroundColor: 'green',
-  },
-  row3: {
-    flex: 1,
-    backgroundColor: 'blue',
-  },
-  row4: {
-    flex: 1,
-    backgroundColor: 'yellow',
   },
   title: {
     fontSize: 20,

@@ -5,7 +5,7 @@
 
 
 import React from 'react';
-import Style  from '../../Styles/Style'
+import Style  from '../../Styles/Main'
 import { Text, View, StyleSheet, Image, BackHandler, Platform} from 'react-native'
 import { Button, SideMenu, List, ListItem, Icon, Header, Divider } from 'react-native-elements'
 import {  VictoryChart, VictoryCandlestick } from "victory-native";

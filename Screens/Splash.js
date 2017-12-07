@@ -4,8 +4,8 @@
 // Desc: Simple SplashScreen that will send users to homescreen
 
 import React from 'react';
-import { View, StyleSheet, Image} from 'react-native'
-import Style from './Styles/Style'
+import { View, StyleSheet, Image, Text} from 'react-native'
+import Style from './Styles/Main'
 import { StackNavigator } from 'react-navigation'
 
 
@@ -24,8 +24,28 @@ export class SplashScreen extends React.Component {
   }
   render() {
     return (
-      <View style = {Style.wrapper}>
-        <Image source={require('./Images/Placeholder.png')} style={Style.logo}/>
+      <View style={Style.wrapper}>
+        {/********************************************************************/}
+        {/*HEAD*/}
+        <View style={Style.header}>
+          <Text style={Style.body}>{this.props.navigation.state.routeName}</Text>
+        </View>
+        {/********************************************************************/}
+
+        {/********************************************************************/}
+        {/*BODY*/}
+        <View style={Style.body}>
+          <Image source={require('./Images/Logo.png')} style={Style.logo}/>
+        </View>
+        {/********************************************************************/}
+
+        {/********************************************************************/}
+        {/*FEED*/}
+        <View style={Style.feed}>
+
+        </View>
+        {/********************************************************************/}
+
       </View>
     );
   }
