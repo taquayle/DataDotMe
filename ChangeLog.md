@@ -15,7 +15,11 @@
 ## * Added MoneyHome to router/app
 ## * Added Workout to router/app
 
-#12/6/2017
+# 12/6/2017
 ## * Installed react-native-victory
 ## * Installed react-native-svg@5.5.1 as 6.0 clashes with react-native 54.1
 ## * Installed react-native-swiper
+
+# 12/7/2017
+## * Added Style/Weight.js, to control the look of everything in weight
+## * Added textInput to WeightHome

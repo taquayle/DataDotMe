@@ -6,8 +6,9 @@
 
 import React from 'react';
 import Style  from '../../Styles/Main'
-import { Text, View, StyleSheet, Image, BackHandler, Platform} from 'react-native'
-import { Button, SideMenu, List, ListItem, Icon, Header, Divider } from 'react-native-elements'
+import Weight from '../../Styles/Weight'
+import { Text, View, StyleSheet, Image, BackHandler, Platform, TextInput} from 'react-native'
+import { Button, SideMenu, List, ListItem, Icon, Header, Divider, FormInput, FormLabel } from 'react-native-elements'
 import {  VictoryChart, VictoryCandlestick } from "victory-native";
 
 
@@ -31,21 +32,85 @@ export class WeightHomeScreen extends React.Component{
 
   constructor(props){
     super(props)
+    this.state = {  addWeight: "",
+                    weightList: [ ]};
   }
 
 
+  submitWeight(){
+    if(this.state.addWeight == "")
+      return;
+    var temp = this.state.weightList;
 
+
+    temp.push(this.state.keyword)
+
+    this.setState({
+      addWeight: "",
+      weightList: temp,
+    })
+  }
   render() {
     return (
-      <View style={Style.wrapper}>
-      <View style={Style.wrapper}>
-        <Text style={Style.body}>{this.props.navigation.state.routeName}</Text>
-      </View>
-      <View style={Style.wrapper}>
-        <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
-      </View>
+      <View style={Weight.wrapper}>
+        {/********************************************************************/}
+        {/*HEAD*/}
+        <View style={Weight.header}>
+          <Text style={Weight.text}>{this.props.navigation.state.routeName}</Text>
+
+        </View>
+        {/********************************************************************/}
+
+        {/********************************************************************/}
+        {/*INPUT*/}
+        <View style={Weight.input}>
+          <View style={Weight.inputWrap}>
+            <Icon
+              name='squared-minus'
+              type='entypo'
+              color='#000000'
+              size={38}
+              onPress={() => console.log('MINUS')}
+            />
+            <TextInput
+              style={Weight.inputBox}
+              keyboardType='numeric'
+              onChangeText={(addWeight) => this.setState({addWeight})}
+              value={this.state.addWeight}
+            />
+
+            <Icon
+              name='squared-plus'
+              type='entypo'
+              color='#000000'
+              size={38}
+              onPress={() => console.log('ADD')}
+            />
+          </View>
+
+          <Button
+            large
+            icon={{name: 'check', size: 32}}
+            buttonStyle={{backgroundColor: 'red', borderRadius: 40, marginVertical: 10}}
+            textStyle={{textAlign: 'center'}}
+            title={`Submit`}
+            onPress={this.submitWeight.bind(this)}
+          />
+
+        </View>
+        {/********************************************************************/}
+
+        {/********************************************************************/}
+        {/*BODY*/}
+        <View style={Weight.body}>
+          <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
+        </View>
+        {/********************************************************************/}
+
+
 
       </View>
+
     );
   }
 }

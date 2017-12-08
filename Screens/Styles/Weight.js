@@ -1,10 +1,11 @@
 // Author: Tyler Quayle
-// File. Style.js
-// Date: December 4, 2017
-// Desc: Default style sheet for the app.
+// File: Styles/Weight.js
+// Date: 12/7/2017
+// Desc: Style guide for anything in the 'weight' sub-app.
 
 import { StyleSheet } from 'react-native'
 import { BG_COLOR, TEXT_COLOR } from './Colors'
+
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
@@ -12,36 +13,35 @@ export default StyleSheet.create({
     backgroundColor: BG_COLOR,
   },
   header:{
-    flex: .08,
+    flex: .1,
+    alignItems: 'center',
+  },
+  input:{
+    flex: .15,
     alignItems: 'center',
   },
   body:{
-    flex: .52,
+    flex: .75,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  feed:{
-    flex: .4,
-    alignItems: 'center',
+
+  inputWrap:{
+    flexDirection: 'row',
+  },
+  inputBox:{
+    height: 40,
+    width: '40%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    fontSize: 20,
+    textAlign: 'center'
   },
 
-  grid: {
-    flex: 1,
-    backgroundColor: '#000000',
-    flexDirection: 'row'
-  },
-  col: {
-    flex: 1,
-    backgroundColor: '#000000',
-    flexDirection: 'column'
-  },
-  cell:{
-    flex: 1,
-    alignItems: 'center',
-  },
   title: {
     fontSize: 20,
     textAlign: 'center',
+    color: TEXT_COLOR,
     margin: 10,
   },
   text: {
@@ -49,9 +49,4 @@ export default StyleSheet.create({
     color: TEXT_COLOR,
     marginBottom: 5,
   },
-  logo:{
-    resizeMode: 'contain',
-    height: 45,
-    backgroundColor: 'transparent'
-  }
 });
