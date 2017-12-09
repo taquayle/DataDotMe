@@ -23,3 +23,6 @@
 # 12/7/2017
 ## * Added Style/Weight.js, to control the look of everything in weight
 ## * Added textInput to WeightHome
+
+# 12.8.2017
+## * Set androidmanifest.xml->windowSoftInputMode to adjustPan from adjustResize

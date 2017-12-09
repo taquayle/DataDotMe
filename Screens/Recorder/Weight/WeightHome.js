@@ -7,7 +7,7 @@
 import React from 'react';
 import Style  from '../../Styles/Main'
 import Weight from '../../Styles/Weight'
-import { Text, View, StyleSheet, Image, BackHandler, Platform, TextInput} from 'react-native'
+import { Text, View, StyleSheet, Image, BackHandler, Platform, TextInput, ScrollView} from 'react-native'
 import { Button, SideMenu, List, ListItem, Icon, Header, Divider, FormInput, FormLabel } from 'react-native-elements'
 import {  VictoryChart, VictoryCandlestick } from "victory-native";
 
@@ -41,10 +41,12 @@ export class WeightHomeScreen extends React.Component{
     if(this.state.addWeight == "")
       return;
     var temp = this.state.weightList;
+    var today = new Date()
+    var newDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
 
-
-    temp.push(this.state.keyword)
-
+    temp.push(newDate)
+    temp.push(['date': newDate, 'weight': this.state.addWeight])
+    console.log(temp)
     this.setState({
       addWeight: "",
       weightList: temp,
@@ -89,9 +91,8 @@ export class WeightHomeScreen extends React.Component{
           </View>
 
           <Button
-            large
-            icon={{name: 'check', size: 32}}
-            buttonStyle={{backgroundColor: 'red', borderRadius: 40, marginVertical: 10}}
+            icon={{name: 'check', size: 22}}
+            buttonStyle={{backgroundColor: 'red', borderRadius: 10, marginVertical: 2}}
             textStyle={{textAlign: 'center'}}
             title={`Submit`}
             onPress={this.submitWeight.bind(this)}
@@ -103,7 +104,23 @@ export class WeightHomeScreen extends React.Component{
         {/********************************************************************/}
         {/*BODY*/}
         <View style={Weight.body}>
-          <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
+          <ScrollView >
+            <List>
+            {
+              this.state.weightList.map((word, i) => (
+                <ListItem
+                  hideChevron
+                  key={i}
+                  title={word}
+                />
+              ))
+            }
+            </List>
+
+
+            {/*{this.showUserKeys(keys)}*/}
+          </ScrollView>
+          {/*<VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>*/}
         </View>
         {/********************************************************************/}
 

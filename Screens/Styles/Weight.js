@@ -22,8 +22,8 @@ export default StyleSheet.create({
   },
   body:{
     flex: .75,
-    justifyContent: 'center',
-    alignItems: 'center',
+    //justifyContent: 'center',
+    //alignItems: 'center',
   },
 
   inputWrap:{
