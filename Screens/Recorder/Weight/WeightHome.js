@@ -33,24 +33,51 @@ export class WeightHomeScreen extends React.Component{
   constructor(props){
     super(props)
     this.state = {  addWeight: "",
-                    weightList: [ ]};
+                    weightList: [],
+                    runningWeight: 0,};
   }
 
 
   submitWeight(){
     if(this.state.addWeight == "")
       return;
-    var temp = this.state.weightList;
+    var tempList = this.state.weightList.slice();
+    var tempWeight = this.state.addWeight
+    var tempDiff = parseInt(this.state.addWeight) - this.state.runningWeight
+    if(this.state.runningWeight == 0)
+      tempDiff = 0
     var today = new Date()
     var newDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+    tempList.push({'date': newDate, 'weight': this.state.addWeight, 'diff': tempDiff})
 
-    temp.push(newDate)
-    temp.push(['date': newDate, 'weight': this.state.addWeight])
-    console.log(temp)
+    if(this.state.runningWeight == 0){
+      this.state.runningWeight = this.state.addWeight
+    }
+    console.log(tempList)
     this.setState({
+      runningWeight: tempWeight,
       addWeight: "",
-      weightList: temp,
+      weightList: tempList,
+
     })
+  }
+
+  weightIcon(diff){
+
+    var iColor = '#999999'
+    var name = 'squared-minus'
+
+    if(diff > 0){
+      iColor = '#FF0000'
+      name = 'arrow-bold-up'
+    }
+    if(diff < 0){
+      iColor = '#00FF00'
+      name = 'arrow-bold-down'
+    }
+    return ({name: name,
+    type:'entypo',
+    color:iColor,})
   }
   render() {
     return (
@@ -107,12 +134,16 @@ export class WeightHomeScreen extends React.Component{
           <ScrollView >
             <List>
             {
-              this.state.weightList.map((word, i) => (
+              this.state.weightList.map((k, i) => (
                 <ListItem
                   hideChevron
                   key={i}
-                  title={word}
+                  title={k['date']}
+                  rightTitle={k['weight'] + " " + k['diff']}
+                  rightIcon={this.weightIcon(parseInt(k['diff']))}
+                  leftIcon={this.weightIcon(parseInt(k['diff']))}
                 />
+
               ))
             }
             </List>

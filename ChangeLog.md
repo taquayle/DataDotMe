@@ -26,3 +26,6 @@
 
 # 12.8.2017
 ## * Set androidmanifest.xml->windowSoftInputMode to adjustPan from adjustResize
+
+# 12.11.2017
+## * Added list to weight. along with difference icons.
