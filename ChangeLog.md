@@ -29,3 +29,8 @@
 
 # 12.11.2017
 ## * Added list to weight. along with difference icons.
+
+# 12.12.2017
+## * Added graph to weightHome.
+## * Added weightlist file to interact with submitted weights.
+## * Still hunting down warning of 'transform'

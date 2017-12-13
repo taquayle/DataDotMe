@@ -9,18 +9,23 @@ import Style  from '../../Styles/Main'
 import Weight from '../../Styles/Weight'
 import { Text, View, StyleSheet, Image, BackHandler, Platform, TextInput, ScrollView} from 'react-native'
 import { Button, SideMenu, List, ListItem, Icon, Header, Divider, FormInput, FormLabel } from 'react-native-elements'
-import {  VictoryChart, VictoryCandlestick } from "victory-native";
+import {  VictoryChart, VictoryBar } from "victory-native";
 
 
 export class WeightHomeScreen extends React.Component{
   componentWillMount(){
-    console.log("Current Screen: " + this.props.navigation.state.key)
+    console.log("Current Screen: " + this.props.navigation.state.routeName)
   }
 
+  componentDidMount(){
+    console.log(this.state.weightList)
+  }
+  
   constructor(props){
     super(props)
     this.state = {  addWeight: "",
-                    weightList: [],
+                    newUser: true,
+                    weightList: [{'date': "NO DATA", 'weight': 0, 'diff': 0}],
                     runningWeight: 0,};
   }
 
@@ -29,6 +34,9 @@ export class WeightHomeScreen extends React.Component{
     if(this.state.addWeight == "") // Check if something has been entered
       return;
     var tempList = this.state.weightList.slice();
+    if(this.state.newUser){
+      tempList = []
+    }
     var tempWeight = this.state.addWeight
     var tempDiff = parseInt(this.state.addWeight) - this.state.runningWeight
 
@@ -43,27 +51,10 @@ export class WeightHomeScreen extends React.Component{
       runningWeight: tempWeight, // 'last' weight entered
       addWeight: "",
       weightList: tempList,
-
+      newUser: false
     })
   }
 
-  weightIcon(diff){
-
-    var iColor = '#999999'
-    var name = 'squared-minus'
-
-    if(diff > 0){
-      iColor = '#FF0000'
-      name = 'arrow-bold-up'
-    }
-    if(diff < 0){
-      iColor = '#00FF00'
-      name = 'arrow-bold-down'
-    }
-    return ({name: name,
-    type:'entypo',
-    color:iColor,})
-  }
   render() {
     return (
       <View style={Weight.wrapper}>
@@ -91,6 +82,7 @@ export class WeightHomeScreen extends React.Component{
               keyboardType='numeric'
               onChangeText={(addWeight) => this.setState({addWeight})}
               value={this.state.addWeight}
+              onSubmit={this.submitWeight.bind(this)}
             />
 
             <Icon
@@ -116,27 +108,13 @@ export class WeightHomeScreen extends React.Component{
         {/********************************************************************/}
         {/*BODY*/}
         <View style={Weight.body}>
-          <ScrollView >
-            <List>
-            {
-              this.state.weightList.map((k, i) => (
-                <ListItem
-                  hideChevron
-                  key={i}
-                  title={k['date']}
-                  rightTitle={k['weight'] + " " + k['diff']}
-                  rightIcon={this.weightIcon(parseInt(k['diff']))}
-                  leftIcon={this.weightIcon(parseInt(k['diff']))}
-                />
-
-              ))
-            }
-            </List>
-
-
-            {/*{this.showUserKeys(keys)}*/}
-          </ScrollView>
-          {/*<VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>*/}
+          <VictoryChart>
+            <VictoryBar
+              data={this.state.weightList}
+              x="date"
+              y="weight"
+            />
+          </VictoryChart>
         </View>
         {/********************************************************************/}
 

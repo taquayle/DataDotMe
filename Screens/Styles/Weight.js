@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native'
 import { BG_COLOR, TEXT_COLOR } from './Colors'
 
 export default StyleSheet.create({
+  // Universal Layout
   wrapper: {
     flex: 1,
     justifyContent: 'center',
@@ -16,16 +17,22 @@ export default StyleSheet.create({
     flex: .1,
     alignItems: 'center',
   },
+
+  // Weight Home layout
   input:{
     flex: .15,
     alignItems: 'center',
   },
   body:{
     flex: .75,
-    //justifyContent: 'center',
-    //alignItems: 'center',
   },
 
+  // Weight List Layout
+  listBody:{
+    flex: .9,
+  },
+
+  // For weight input selections
   inputWrap:{
     flexDirection: 'row',
   },
@@ -38,6 +45,7 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
 
+  // Text styling
   title: {
     fontSize: 20,
     textAlign: 'center',

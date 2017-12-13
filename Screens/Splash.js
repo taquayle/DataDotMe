@@ -12,7 +12,7 @@ import { StackNavigator } from 'react-navigation'
 
 export class SplashScreen extends React.Component {
   componentWillMount(){
-    console.log("Current Screen: " + this.props.navigation.state.key)}
+    console.log("Current Screen: " + this.props.navigation.state.routeName)}
 
   constructor(props) {
     super(props);

@@ -19,7 +19,7 @@ const instructions = Platform.select({
 
 export class HomeScreen extends React.Component{
   componentWillMount(){
-    console.log("Current Screen: " + this.props.navigation.state.key)
+    console.log("Current Screen: " + this.props.navigation.state.routeName)
   }
 
   constructor(props){
