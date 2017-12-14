@@ -1,3 +1,9 @@
+/******************************************************************************/
+/******************************************************************************/
+// THIS FILE IS NOT BEING USED AT THE MOMENT, ALL LOGIC HAS BEEN PUT INTO
+//  WEIGHTHOME UNTIL I FIGURE OUT HOW TO USE SWIPER ALONG WITH NAVIGATION/REF
+/******************************************************************************/
+/******************************************************************************/
 // Author: Tyler Quayle
 // Date: 12/12/2017
 // File: Weight/WeightList.js
@@ -43,6 +49,34 @@ export class WeightListScreen extends React.Component{
     type:'entypo',
     color:iColor,})
   }
+
+  showList(){
+    if(this.state.newUser)
+    {
+      return(<Text>NO DATA</Text>)
+    }
+    else{
+      return(
+        <ScrollView >
+          <List>
+          {
+            this.state.weightList.map((k, i) => (
+              <ListItem
+                hideChevron
+                key={i}
+                title={k['date']}
+                rightTitle={k['weight'] + " " + k['diff']}
+                rightIcon={this.weightIcon(parseInt(k['diff']))}
+                leftIcon={this.weightIcon(parseInt(k['diff']))}
+              />
+            ))
+          }
+          </List>
+        </ScrollView>
+      )
+    }
+  }
+
   render() {
     var tempData = this.state.weightList.slice()
     console.log(tempData)
@@ -59,22 +93,7 @@ export class WeightListScreen extends React.Component{
         {/********************************************************************/}
         {/*BODY*/}
         <View style={Weight.listBody}>
-          <ScrollView >
-            <List>
-            {
-              this.state.weightList.map((k, i) => (
-                <ListItem
-                  hideChevron
-                  key={i}
-                  title={k['date']}
-                  rightTitle={k['weight'] + " " + k['diff']}
-                  rightIcon={this.weightIcon(parseInt(k['diff']))}
-                  leftIcon={this.weightIcon(parseInt(k['diff']))}
-                />
-              ))
-            }
-            </List>
-          </ScrollView>
+          {this.showList()}
         </View>
         {/********************************************************************/}
 

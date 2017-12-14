@@ -14,6 +14,7 @@ import { WorkHomeScreen} from '../Recorder/Workout/WorkHome'
 import { MoneyHomeScreen} from '../Recorder/Money/MoneyHome'
 import { WeightHomeScreen } from '../Recorder/Weight/WeightHome'
   import { WeightListScreen } from '../Recorder/Weight/WeightList'
+  import { WeightGraphScreen } from '../Recorder/Weight/WeightGraph'
 import { FoodHomeScreen } from '../Recorder/Food/FoodHome'
 
 export const Router = StackNavigator({
@@ -23,6 +24,7 @@ export const Router = StackNavigator({
   MoneyHome: { screen: MoneyHomeScreen, },
   WeightHome: { screen: WeightHomeScreen, },
     WeightList: { screen: WeightListScreen},
+    WeightGraph: { screen: WeightGraphScreen},
   WorkHome: { screen: WorkHomeScreen, },
   },
   navigation = {

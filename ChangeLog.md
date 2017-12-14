@@ -33,4 +33,7 @@
 # 12.12.2017
 ## * Added graph to weightHome.
 ## * Added weightlist file to interact with submitted weights.
-## * Still hunting down warning of 'transform'
+## * Still hunting down warning of 'transform
+
+# 12.13.2017
+## * Added swiper to weigh home. working on how to use swiper with navigaiton/ref to break up into parent/child scenario
