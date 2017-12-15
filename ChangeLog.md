@@ -40,3 +40,5 @@
 
 # 12.14.2017
 ## * Added colors to chart in weightlist
+## * ParseInt weight before putting into array
+## * Commented WeightHome
