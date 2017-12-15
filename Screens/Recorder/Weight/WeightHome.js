@@ -28,15 +28,27 @@ export class WeightHomeScreen extends React.Component{
     console.log(this.state.weightList)
   }
 
+  /****************************************************************************/
+  // addWeight: input from user that will be inserted into weight List
+  // newUser: Just set to true by default to display 'no data'
+  // weightList: array containing the weight data
+  // runningWeight: last weight entered.
+  // goalWeight: user entered goal to weight.
   constructor(props){
     super(props)
     this.state = {  addWeight: "",
                     newUser: true,
-                    weightList: [{'time': null, 'date': null, 'weight': 0, 'diff': 0}],
-                    runningWeight: 0,};
+                    weightList: [{'time': null, 'date': null, 'weight': 0, 'diff': 0, 'color': null}],
+                    runningWeight: 0,
+                    goalWeight: 0};
   }
 
 
+  /****************************************************************************/
+  // SubmitWeight
+  //  Grab weight from textinput and insert it into this.state.weightList
+  //  @return updated states
+  /****************************************************************************/
   submitWeight(){
     if(this.state.addWeight == 0) // Check if something has been entered
       return;
@@ -52,7 +64,15 @@ export class WeightHomeScreen extends React.Component{
     var today = new Date()
     var newDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
     var newTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
-    tempList.push({'time': newTime, 'date': newDate, 'weight': this.state.addWeight, 'diff': tempDiff})
+    var color = "#999999"
+    if(tempDiff > 0)
+      color = "#FF0000"
+    if(tempDiff < 0)
+      color = "#00FF00"
+    tempList.push({'time': newTime, 'date': newDate,
+                    'weight': parseInt(this.state.addWeight), 'diff': tempDiff,
+                    'color': color
+                  })
 
     console.log(tempList)
     this.setState({
@@ -63,27 +83,53 @@ export class WeightHomeScreen extends React.Component{
     })
   }
 
-  showChart(){
+  /****************************************************************************/
+  // showGraph()
+  //  Display the graph showing the users weight.
+  //  @return react-victorybar
+  /****************************************************************************/
+  showGraph(){
     if(this.state.newUser)
     {
       return(<Text>NO DATA</Text>)
     }
     else{
+      var tempData = this.state.weightList.slice()
       return(
+
         <VictoryChart>
           <VictoryBar
-            style={{ data: { fill: "#c43a31" } }}
+
             alignment="start"
-            data={this.state.weightList}
-            sortKey='time'
-            x='date'
+            data={tempData}
+            x='time'
             y='weight'
+            style={{
+              data: {
+                fill: (tempData) => tempData.color,
+                stroke: (tempData) => tempData.color,
+                fillOpacity: 0.7,
+                strokeWidth: 3
+              },
+              labels: {
+                fontSize: 15,
+                fill: (tempData) => tempData.color
+              }
+            }}
+
           />
         </VictoryChart>
       )
     }
   }
 
+  /****************************************************************************/
+  // weightIcon(diff)
+  //  Given the current [diff] between last weight and current. return
+  //  corresponding icon, green for weightloss or red for weightgain
+  //  @input diff, the current difference of array
+  //  @return react-native-elements icon
+  /****************************************************************************/
   weightIcon(diff){
     var iColor = '#999999'
     var name = 'squared-minus'
@@ -101,6 +147,11 @@ export class WeightHomeScreen extends React.Component{
     color:iColor,})
   }
 
+  /******************************************************************************/
+  // showList()
+  //  Displays a react-native-elements list.
+  // @return react-native-elements list
+  /******************************************************************************/
   showList(){
     if(this.state.newUser)
     {
@@ -183,12 +234,10 @@ export class WeightHomeScreen extends React.Component{
         {/********************************************************************/}
         {/*BODY*/}
         <View style={Weight.body}>
-
-            <Swiper>
-              {this.showChart()}
-              {this.showList()}
-            </Swiper>
-
+          <Swiper>
+            {this.showGraph()}
+            {this.showList()}
+          </Swiper>
         </View>
         {/********************************************************************/}
 

@@ -37,3 +37,6 @@
 
 # 12.13.2017
 ## * Added swiper to weigh home. working on how to use swiper with navigaiton/ref to break up into parent/child scenario
+
+# 12.14.2017
+## * Added colors to chart in weightlist
