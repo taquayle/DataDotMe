@@ -18,7 +18,7 @@ import { WeightHomeScreen } from '../Recorder/Weight/WeightHome'
 import { FoodHomeScreen } from '../Recorder/Food/FoodHome'
 
 export const Router = StackNavigator({
-  Splash: { screen: SplashScreen, },
+  Splash: { screen: SplashScreen, }, //Whatever is first in list will be automatically navigated too
   Home: { screen: HomeScreen, },
   FoodHome: { screen: FoodHomeScreen, },
   MoneyHome: { screen: MoneyHomeScreen, },

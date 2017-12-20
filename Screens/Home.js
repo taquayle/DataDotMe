@@ -7,7 +7,8 @@
 import React from 'react';
 import { Router} from './Navigate/Router'
 import Style  from './Styles/Main'
-import { Text, View, StyleSheet, Image, BackHandler, Platform} from 'react-native'
+import UserWeight from './Stores/WeightStore'
+import { Text, View, StyleSheet, Image, BackHandler, Platform, AsyncStorage} from 'react-native'
 import { Button, SideMenu, List, ListItem, Icon, Header, Divider } from 'react-native-elements'
 
 const instructions = Platform.select({
@@ -26,7 +27,18 @@ export class HomeScreen extends React.Component{
     super(props)
   }
 
-
+  /****************************************************************************/
+  // _deleteAsync()
+  //  Temp method to set all data to null.
+  _deleteAsync = async() =>{
+    console.log('Resetting All Data')
+    try {
+      await AsyncStorage.removeItem('@WeightList');
+    } catch (error) {
+      console.log("Remove process failed: " + error)
+    }
+    UserWeight.resetData()
+  }
 
   render() {
 
@@ -96,6 +108,14 @@ export class HomeScreen extends React.Component{
                 </View>
 
             </View>
+            <Button
+              large
+              icon={{name: 'trending-up', size: 32}}
+              buttonStyle={{ borderRadius: 40, marginVertical: 10}}
+              textStyle={{textAlign: 'center'}}
+              title={`reset`}
+              onPress={() => this._deleteAsync()}
+            />
           </View>
         </View>
         {/********************************************************************/}
