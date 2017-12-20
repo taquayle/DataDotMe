@@ -22,28 +22,19 @@ export class SplashScreen extends React.Component {
   /****************************************************************************/
   // _loadAsync()
   //  Attempt to load async data
-  _loadAsync = async() => {
-    const { navigate } = this.props.navigation
+  /****************************************************************************/
+  _loadAsync = async()=>{
+
     console.log("Attempting to load Async Storage")
-    try {
-      const value = await AsyncStorage.getItem('@WeightList');
-      if (value !== null){
-        console.log("Loaded @WeightList")
-        console.log(JSON.parse(value))
-        UserWeight.setWeightList(JSON.parse(value))
-      }
-    } catch (error) {
-      console.log('Failed to load data: ' + error)
-    }
-    setTimeout(() => { // Execute ONCE
-        this.setState(previousState => {navigate('Home')});
-    }, 1000); //Milliseconds before switch
+
+    await UserWeight.loadAsync()
+    
+    console.log("Done loading Async Storage")
+    const { navigate } = this.props.navigation
+    navigate('Home')
   }
 
-  _asyncHang = async() =>{
-    AsyncStorage.flushGetRequests()
-    console.log("Async took to long to load.")
-  }
+
 
   constructor(props) {
     super(props);

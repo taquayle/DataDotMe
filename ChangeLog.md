@@ -50,3 +50,7 @@
 ## * Installed MobX
 ## * Started user weight store.
 ## * Added Asyncstorage functionality. Loads in splash currently.
+
+# 12.20.2017
+## * Added Async to WeightStore.
+## * Moved Async logic to WeightStore.

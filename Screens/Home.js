@@ -32,12 +32,8 @@ export class HomeScreen extends React.Component{
   //  Temp method to set all data to null.
   _deleteAsync = async() =>{
     console.log('Resetting All Data')
-    try {
-      await AsyncStorage.removeItem('@WeightList');
-    } catch (error) {
-      console.log("Remove process failed: " + error)
-    }
     UserWeight.resetData()
+    await UserWeight.deleteData()
   }
 
   render() {

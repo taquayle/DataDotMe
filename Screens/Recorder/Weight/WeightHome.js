@@ -6,8 +6,10 @@
 /******************************************************************************/
 // React-native includes
 import React from 'react';
-import { Text, View, StyleSheet, Image, BackHandler, Platform, TextInput, ScrollView, AsyncStorage} from 'react-native'
-import { Button, SideMenu, List, ListItem, Icon, Header, Divider, FormInput, FormLabel } from 'react-native-elements'
+import { Text, View, StyleSheet, Image, BackHandler,
+  Platform, TextInput, ScrollView, AsyncStorage} from 'react-native'
+import { Button, SideMenu, List, ListItem, Icon,
+  Header, Divider, FormInput, FormLabel } from 'react-native-elements'
 import {  VictoryChart, VictoryBar } from "victory-native";
 import Swiper from 'react-native-swiper'
 
@@ -29,34 +31,32 @@ export class WeightHomeScreen extends React.Component{
   }
 
   componentDidMount(){
+    console.log("Mounted")
+
     if(UserWeight.getWeightList() != null){
+      console.log("WeightList")
+      console.log(UserWeight.getWeightList())
+      temp = UserWeight.getWeightList()
       this.setState({
-        weightList: UserWeight.getWeightList(),
-        newUser: false
+        weightList: temp.peek(),
+        newUser: false,
+        runningWeight: UserWeight.getRunningWeight()
       })
-      console.log("WeightStore contained data")
-      console.log(this.state.weightList)
     }
   }
 
-  _UpdateAsync = async(newValues) =>{
-    try{
-      await AsyncStorage.setItem('@WeightList', JSON.stringify(newValues))
-    } catch(error){
-      console.log('WeightList failed to sync: ' + error)
-    }
-  }
   /****************************************************************************/
   // addWeight: input from user that will be inserted into weight List
   // newUser: Just set to true by default to display 'no data'
   // weightList: array containing the weight data
   // runningWeight: last weight entered.
   // goalWeight: user entered goal to weight.
+  /****************************************************************************/
   constructor(props){
     super(props)
     this.state = {  addWeight: "",
                     newUser: true,
-                    weightList: [],
+                    weightList: null,
                     runningWeight: 0,
                     goalWeight: 0};
   }
@@ -70,7 +70,7 @@ export class WeightHomeScreen extends React.Component{
   submitWeight(){
     if(this.state.addWeight == 0) // Check if something has been entered
       return;
-    var tempList = this.state.weightList.slice();
+    var tempList = this.state.weightList
     if(this.state.newUser){
       tempList = []
     }
@@ -92,8 +92,7 @@ export class WeightHomeScreen extends React.Component{
                     'color': color
                   })
 
-    console.log(tempList)
-    this._UpdateAsync(tempList)
+    UserWeight.updateAsync(tempList, tempWeight)
     this.setState({
       runningWeight: tempWeight, // 'last' weight entered
       addWeight: 0,
@@ -115,7 +114,7 @@ export class WeightHomeScreen extends React.Component{
       return(<Text>NO DATA</Text>)
     }
     else{
-      var tempData = this.state.weightList.slice()
+      var tempData = this.state.weightList
       return(
 
         <VictoryChart>
@@ -201,7 +200,6 @@ export class WeightHomeScreen extends React.Component{
   }
 
   render() {
-
     return (
 
       <View style={Weight.wrapper}>
