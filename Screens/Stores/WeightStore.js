@@ -9,6 +9,7 @@ import {AsyncStorage} from "react-native"
 class  WeightStore{
   @observable weightList = null
   @observable runningWeight = null
+  @observable targetWeight = null
 
   /****************************************************************************/
 
@@ -23,6 +24,8 @@ class  WeightStore{
   /****************************************************************************/
   async deleteData(){
     await this.storageDeleteHandler('@WeightList')
+    await this.storageDeleteHandler('@RunningWeight')
+    await this.storageDeleteHandler('@TargetWeight')
   }
 
   /****************************************************************************/
@@ -44,6 +47,7 @@ class  WeightStore{
   async loadAsync(){
     this.setWeightList(JSON.parse(await this.storageGetHandler('@WeightList')))
     this.setRunningWeight(parseInt(await this.storageGetHandler('@RunningWeight')))
+    this.setTargetWeight(parseInt(await this.storageGetHandler('@TargetWeight')))
   }
 
   /****************************************************************************/
@@ -74,7 +78,11 @@ class  WeightStore{
     await this.storageSetHandler('@WeightList', JSON.stringify(listObj))
     await this.storageSetHandler('@RunningWeight', runValue.toString())
   }
-
+  async updateAsync(listObj, runValue, targetValue){
+    await this.storageSetHandler('@WeightList', JSON.stringify(listObj))
+    await this.storageSetHandler('@RunningWeight', runValue.toString())
+    await this.storageSetHandler('@TargetWeight', targetValue.toString())
+  }
   /****************************************************************************/
 
   /****************************************************************************/
@@ -96,6 +104,12 @@ class  WeightStore{
   setRunningWeight(obj){ this.runningWeight = obj}
 
   getRunningWeight(){ return this.runningWeight }
+  /****************************************************************************/
+
+  /****************************************************************************/
+  setTargetWeight(obj){ this.targetWeight = obj}
+
+  getTargetWeight(){ return this.targetWeight }
   /****************************************************************************/
 }
 

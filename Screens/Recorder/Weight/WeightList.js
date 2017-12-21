@@ -5,7 +5,7 @@
 /******************************************************************************/
 /******************************************************************************/
 // Author: Tyler Quayle
-// Date: 12/12/2017
+// Date: December 12, 2017
 // File: Weight/WeightList.js
 // Desc: Screen shown when swiped right, showing list of entered weight.
 

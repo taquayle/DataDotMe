@@ -99,7 +99,7 @@ export class HomeScreen extends React.Component{
                     buttonStyle={{ borderRadius: 40, marginVertical: 10}}
                     textStyle={{textAlign: 'center'}}
                     title={`Weight`}
-                    onPress={() => navigate('WeightHome')}
+                    onPress={() => navigate('WeightTrans')}
                   />
                 </View>
 

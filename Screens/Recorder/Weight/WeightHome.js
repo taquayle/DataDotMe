@@ -31,16 +31,13 @@ export class WeightHomeScreen extends React.Component{
   }
 
   componentDidMount(){
-    console.log("Mounted")
-
     if(UserWeight.getWeightList() != null){
-      console.log("WeightList")
-      console.log(UserWeight.getWeightList())
       temp = UserWeight.getWeightList()
       this.setState({
         weightList: temp.peek(),
         newUser: false,
-        runningWeight: UserWeight.getRunningWeight()
+        runningWeight: UserWeight.getRunningWeight(),
+        targetWeight: UserWeight.getTargetWeight()
       })
     }
   }
@@ -50,7 +47,7 @@ export class WeightHomeScreen extends React.Component{
   // newUser: Just set to true by default to display 'no data'
   // weightList: array containing the weight data
   // runningWeight: last weight entered.
-  // goalWeight: user entered goal to weight.
+  // targetWeight: user entered goal to weight.
   /****************************************************************************/
   constructor(props){
     super(props)
@@ -58,7 +55,7 @@ export class WeightHomeScreen extends React.Component{
                     newUser: true,
                     weightList: null,
                     runningWeight: 0,
-                    goalWeight: 0};
+                    targetWeight: null};
   }
 
 
