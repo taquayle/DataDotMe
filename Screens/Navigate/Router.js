@@ -10,26 +10,32 @@ import React from 'react'
 //  SCREENS
 import { HomeScreen } from '../Home';
 import { SplashScreen } from '../Splash';
-import { WorkHomeScreen} from '../Recorder/Workout/WorkHome'
-import { MoneyHomeScreen} from '../Recorder/Money/MoneyHome'
+import { WorkoutHomeScreen} from '../Recorder/Workout/WorkoutHome'
+  import { WorkoutTransitionScreen } from '../Recorder/Workout/WorkoutTransition'
+import { FinanceHomeScreen} from '../Recorder/Finance/FinanceHome'
+  import { FinanceTransitionScreen } from '../Recorder/Finance/FinanceTransition'
 import { WeightHomeScreen } from '../Recorder/Weight/WeightHome'
   import { WeightTransitionScreen } from '../Recorder/Weight/WeightTransition'
   import { WeightListScreen } from '../Recorder/Weight/WeightList'
   import { WeightGraphScreen } from '../Recorder/Weight/WeightGraph'
   import { WeightNewScreen } from '../Recorder/Weight/WeightNew'
 import { FoodHomeScreen } from '../Recorder/Food/FoodHome'
+  import { FoodTransitionScreen } from '../Recorder/Food/FoodTransition'
 
 export const Router = StackNavigator({
   Splash: { screen: SplashScreen, }, //Whatever is first in list will be automatically navigated too
   Home: { screen: HomeScreen, },
   FoodHome: { screen: FoodHomeScreen, },
-  MoneyHome: { screen: MoneyHomeScreen, },
+    FoodTrans: {screen: FoodTransitionScreen, },
+  FinanceHome: { screen: FinanceHomeScreen, },
+    FinanceTrans: { screen: FinanceTransitionScreen, },
   WeightHome: { screen: WeightHomeScreen, },
+    WeightTrans: {screen: WeightTransitionScreen, },
     WeightList: { screen: WeightListScreen, },
     WeightGraph: { screen: WeightGraphScreen, },
     WeightNew: { screen: WeightNewScreen, },
-    WeightTrans: {screen: WeightTransitionScreen, },
-  WorkHome: { screen: WorkHomeScreen, },
+  WorkHome: { screen: WorkoutHomeScreen, },
+    WorkoutTrans: { screen: WorkoutTransitionScreen,},
   },
   navigation = {
     headerMode: 'none'

@@ -62,7 +62,7 @@ export class HomeScreen extends React.Component{
                       buttonStyle={{ borderRadius: 40, marginVertical: 10}}
                       textStyle={{textAlign: 'center'}}
                       title={`Workout`}
-                      onPress={() => navigate('WorkHome')}
+                      onPress={() => navigate('WorkoutTrans')}
                     />
                   </View>
 
@@ -73,7 +73,7 @@ export class HomeScreen extends React.Component{
                     buttonStyle={{ borderRadius: 40, marginVertical: 10}}
                     textStyle={{textAlign: 'center'}}
                     title={`Food`}
-                    onPress={() => navigate('FoodHome')}
+                    onPress={() => navigate('FoodTrans')}
                   />
                 </View>
 
@@ -88,7 +88,7 @@ export class HomeScreen extends React.Component{
                     buttonStyle={{ borderRadius: 40, marginVertical: 10}}
                     textStyle={{textAlign: 'center'}}
                     title={`Money`}
-                    onPress={() => navigate('MoneyHome')}
+                    onPress={() => navigate('FinanceTrans')}
                   />
                 </View>
 

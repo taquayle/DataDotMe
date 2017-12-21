@@ -54,3 +54,7 @@
 # 12.20.2017
 ## * Added Async to WeightStore.
 ## * Moved Async logic to WeightStore.
+
+# 12.21.2017
+## * Changed 'money' label to 'finance'
+## * Added 'transition' screens for finance, workout, food
