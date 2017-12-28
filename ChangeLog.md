@@ -59,3 +59,7 @@
 ## * Changed 'money' label to 'finance'
 ## * Added 'transition' screens for finance, workout, food
 ## *
+
+# 12.27.2017
+## * Changed 'finance' to 'spending' to better emphasize what it tracks
+## * Added spending store.
