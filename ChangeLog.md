@@ -67,4 +67,8 @@
 ### * Changed 'finance' to 'spending' to better emphasize what it tracks
 ### * Added spending store.
 ### * Transition Logic for spending updated
-### * Added Backhandlers 
+### * Added Backhandlers
+
+## 12.28.2017
+### * Split up WeightGraph and WeightList into 2 different files
+### * Weightstore errors resolved (do not use overloaded methods)

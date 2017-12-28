@@ -1,9 +1,3 @@
-/******************************************************************************/
-/******************************************************************************/
-// THIS FILE IS NOT BEING USED AT THE MOMENT, ALL LOGIC HAS BEEN PUT INTO
-//  WEIGHTHOME UNTIL I FIGURE OUT HOW TO USE SWIPER ALONG WITH NAVIGATION/REF
-/******************************************************************************/
-/******************************************************************************/
 // Author: Tyler Quayle
 // Date: December 12, 2017
 // File: Weight/WeightList.js
@@ -17,41 +11,35 @@ import { Button, SideMenu, List, ListItem, Icon, Header, Divider, FormInput, For
 import {  VictoryChart, VictoryBar } from "victory-native";
 
 
-export class WeightListScreen extends React.Component{
-  componentWillMount(){
-    console.log("Current Screen: " + this.props.navigation.state.routeName)
-  }
-
-  componentDidMount(){
-
-    console.log(this.state.weightList)
-  }
-  constructor(props){
-    super(props)
-    this.state = {  addWeight: "",
-                    weightList: [{'date': "NO DATA", 'weight': 0, 'diff': 0}],
-                    runningWeight: 0,};
-  }
-
-  weightIcon(diff){
-    var iColor = '#999999'
+class WeightListDisplay{
+  /****************************************************************************/
+  // weightIcon(diff)
+  //  Given the current [diff] between last weight and current. return
+  //  corresponding icon, green for weightloss or red for weightgain
+  //  @input diff, the current difference of array
+  //  @return react-native-elements icon
+  /****************************************************************************/
+  weightIcon(diff, color){
     var name = 'squared-minus'
 
     if(diff > 0){
-      iColor = '#FF0000'
       name = 'arrow-bold-up'
     }
     if(diff < 0){
-      iColor = '#00FF00'
       name = 'arrow-bold-down'
     }
     return ({name: name,
     type:'entypo',
-    color:iColor,})
+    color: color,})
   }
 
-  showList(){
-    if(this.state.newUser)
+  /******************************************************************************/
+  // showList()
+  //  Displays a react-native-elements list.
+  // @return react-native-elements list
+  /******************************************************************************/
+  showList(listObj, newUser){
+    if(newUser)
     {
       return(<Text>NO DATA</Text>)
     }
@@ -60,14 +48,14 @@ export class WeightListScreen extends React.Component{
         <ScrollView >
           <List>
           {
-            this.state.weightList.map((k, i) => (
+            listObj.map((k, i) => (
               <ListItem
                 hideChevron
                 key={i}
                 title={k['date']}
                 rightTitle={k['weight'] + " " + k['diff']}
-                rightIcon={this.weightIcon(parseInt(k['diff']))}
-                leftIcon={this.weightIcon(parseInt(k['diff']))}
+                rightIcon={this.weightIcon(parseInt(k['diff']), k['color'])}
+                leftIcon={this.weightIcon(parseInt(k['diff']), k['color'])}
               />
             ))
           }
@@ -76,31 +64,8 @@ export class WeightListScreen extends React.Component{
       )
     }
   }
-
-  render() {
-    var tempData = this.state.weightList.slice()
-    console.log(tempData)
-    return (
-      <View style={Weight.wrapper}>
-        {/********************************************************************/}
-        {/*HEAD*/}
-        <View style={Weight.header}>
-          <Text style={Weight.text}>{this.props.navigation.state.routeName}</Text>
-
-        </View>
-        {/********************************************************************/}
-
-        {/********************************************************************/}
-        {/*BODY*/}
-        <View style={Weight.listBody}>
-          {this.showList()}
-        </View>
-        {/********************************************************************/}
-
-
-
-      </View>
-
-    );
-  }
 }
+
+var WeightList = new WeightListDisplay()
+
+export default WeightList

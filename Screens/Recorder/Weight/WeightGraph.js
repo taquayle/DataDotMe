@@ -1,9 +1,3 @@
-/******************************************************************************/
-/******************************************************************************/
-// THIS FILE IS NOT BEING USED AT THE MOMENT, ALL LOGIC HAS BEEN PUT INTO
-//  WEIGHTHOME UNTIL I FIGURE OUT HOW TO USE SWIPER ALONG WITH NAVIGATION/REF
-/******************************************************************************/
-/******************************************************************************/
 // Author: Tyler Quayle
 // Date: December 13, 2017
 // File: Weight/WeightGraph.js
@@ -16,52 +10,48 @@ import { Text, View, StyleSheet, Image, BackHandler, Platform, TextInput, Scroll
 import { Button, SideMenu, List, ListItem, Icon, Header, Divider, FormInput, FormLabel } from 'react-native-elements'
 import {  VictoryChart, VictoryBar } from "victory-native";
 
+class WeightGraphDisplay {
 
-export class WeightGraphScreen extends React.Component{
-  componentWillMount(){
-    console.log("Current Screen: " + this.props.navigation.state.routeName)
-  }
-
-  componentDidMount(){
-    console.log(this.state.weightList)
-  }
-  constructor(props){
-    super(props)
-    this.state = {  addWeight: "",
-                    weightList: [{'date': "NO DATA", 'weight': 0, 'diff': 0}],
-                    runningWeight: 0,};
-  }
-
-  showChart(){
-    if(this.state.newUser)
+  /****************************************************************************/
+  // showGraph()
+  //  Display the graph showing the users weight.
+  //  @return react-victorybar
+  /****************************************************************************/
+  showGraph(listObj, newUser){
+    if(newUser)
     {
       return(<Text>NO DATA</Text>)
     }
     else{
+      var tempData = listObj
       return(
+
         <VictoryChart>
           <VictoryBar
-            style={{ data: { fill: "#c43a31" } }}
+
             alignment="start"
-            data={this.state.weightList}
-            sortKey='time'
-            x='date'
+            data={tempData}
+            x='time'
             y='weight'
+            style={{
+              data: {
+                fill: (tempData) => tempData.color,
+                stroke: (tempData) => tempData.color,
+                fillOpacity: 0.7,
+                strokeWidth: 3
+              },
+              labels: {
+                fontSize: 15,
+                fill: (tempData) => tempData.color
+              }
+            }}
+
           />
         </VictoryChart>
       )
     }
   }
-
-  render() {
-    var tempData = this.state.weightList.slice()
-    console.log(tempData)
-    return (
-      <View style={Weight.wrapper}>
-        {this.props.children}
-        <Text>Hello, World</Text>
-      </View>
-
-    );
-  }
 }
+
+var WeightGraph = new WeightGraphDisplay()
+export default WeightGraph

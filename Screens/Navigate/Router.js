@@ -16,8 +16,6 @@ import { SpendingHomeScreen} from '../Recorder/Spending/SpendingHome'
   import { SpendingTransitionScreen } from '../Recorder/Spending/SpendingTransition'
 import { WeightHomeScreen } from '../Recorder/Weight/WeightHome'
   import { WeightTransitionScreen } from '../Recorder/Weight/WeightTransition'
-  import { WeightListScreen } from '../Recorder/Weight/WeightList'
-  import { WeightGraphScreen } from '../Recorder/Weight/WeightGraph'
   import { WeightNewScreen } from '../Recorder/Weight/WeightNew'
 import { FoodHomeScreen } from '../Recorder/Food/FoodHome'
   import { FoodTransitionScreen } from '../Recorder/Food/FoodTransition'
@@ -31,8 +29,6 @@ export const Router = StackNavigator({
     SpendingTrans: { screen: SpendingTransitionScreen, },
   WeightHome: { screen: WeightHomeScreen, },
     WeightTrans: {screen: WeightTransitionScreen, },
-    WeightList: { screen: WeightListScreen, },
-    WeightGraph: { screen: WeightGraphScreen, },
     WeightNew: { screen: WeightNewScreen, },
   WorkHome: { screen: WorkoutHomeScreen, },
     WorkoutTrans: { screen: WorkoutTransitionScreen,},

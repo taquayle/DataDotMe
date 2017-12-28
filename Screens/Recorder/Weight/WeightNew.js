@@ -66,7 +66,7 @@ export class WeightNewScreen extends React.Component {
                     'color': "#999999"
                   })
 
-    await UserWeight.updateAsync(tempList, tempWeight, tempTarget)
+    await UserWeight.updateAsyncNewUser(tempList, tempWeight, tempTarget)
     UserWeight.setTargetWeight(tempTarget)
     UserWeight.setWeightList(tempList)
     UserWeight.setRunningWeight(tempWeight)

@@ -23,7 +23,9 @@ import Weight from '../../Styles/Weight'
 import UserWeight from '../../Stores/WeightStore'
 
 /******************************************************************************/
-import {WeightGraphScreen} from './WeightGraph'
+// Display Helpers
+import WeightGraph from './WeightGraph'
+import WeightList from './WeightList'
 
 export class WeightHomeScreen extends React.Component{
   componentWillMount(){
@@ -34,7 +36,7 @@ export class WeightHomeScreen extends React.Component{
     if(UserWeight.getWeightList() != null){
       temp = UserWeight.getWeightList()
       this.setState({
-        weightList: temp.peek(),
+        weightArray: temp.peek(),
         newUser: false,
         runningWeight: UserWeight.getRunningWeight(),
         targetWeight: UserWeight.getTargetWeight()
@@ -50,7 +52,7 @@ export class WeightHomeScreen extends React.Component{
   /****************************************************************************/
   // addWeight: input from user that will be inserted into weight List
   // newUser: Just set to true by default to display 'no data'
-  // weightList: array containing the weight data
+  // weightArray: array containing the weight data
   // runningWeight: last weight entered.
   // targetWeight: user entered goal to weight.
   /****************************************************************************/
@@ -58,7 +60,7 @@ export class WeightHomeScreen extends React.Component{
     super(props)
     this.state = {  addWeight: "",
                     newUser: true,
-                    weightList: null,
+                    weightArray: null,
                     runningWeight: 0,
                     targetWeight: null};
   }
@@ -66,13 +68,13 @@ export class WeightHomeScreen extends React.Component{
 
   /****************************************************************************/
   // SubmitWeight
-  //  Grab weight from textinput and insert it into this.state.weightList
+  //  Grab weight from textinput and insert it into this.state.weightArray
   //  @return updated states
   /****************************************************************************/
   submitWeight(){
     if(this.state.addWeight == 0) // Check if something has been entered
       return;
-    var tempList = this.state.weightList
+    var tempList = this.state.weightArray
     if(this.state.newUser){
       tempList = []
     }
@@ -98,108 +100,14 @@ export class WeightHomeScreen extends React.Component{
     this.setState({
       runningWeight: tempWeight, // 'last' weight entered
       addWeight: 0,
-      weightList: tempList,
+      weightArray: tempList,
       newUser: false
     })
 
 
   }
 
-  /****************************************************************************/
-  // showGraph()
-  //  Display the graph showing the users weight.
-  //  @return react-victorybar
-  /****************************************************************************/
-  showGraph(){
-    if(this.state.newUser)
-    {
-      return(<Text>NO DATA</Text>)
-    }
-    else{
-      var tempData = this.state.weightList
-      return(
 
-        <VictoryChart>
-          <VictoryBar
-
-            alignment="start"
-            data={tempData}
-            x='time'
-            y='weight'
-            style={{
-              data: {
-                fill: (tempData) => tempData.color,
-                stroke: (tempData) => tempData.color,
-                fillOpacity: 0.7,
-                strokeWidth: 3
-              },
-              labels: {
-                fontSize: 15,
-                fill: (tempData) => tempData.color
-              }
-            }}
-
-          />
-        </VictoryChart>
-      )
-    }
-  }
-
-  /****************************************************************************/
-  // weightIcon(diff)
-  //  Given the current [diff] between last weight and current. return
-  //  corresponding icon, green for weightloss or red for weightgain
-  //  @input diff, the current difference of array
-  //  @return react-native-elements icon
-  /****************************************************************************/
-  weightIcon(diff){
-    var iColor = '#999999'
-    var name = 'squared-minus'
-
-    if(diff > 0){
-      iColor = '#FF0000'
-      name = 'arrow-bold-up'
-    }
-    if(diff < 0){
-      iColor = '#00FF00'
-      name = 'arrow-bold-down'
-    }
-    return ({name: name,
-    type:'entypo',
-    color:iColor,})
-  }
-
-  /******************************************************************************/
-  // showList()
-  //  Displays a react-native-elements list.
-  // @return react-native-elements list
-  /******************************************************************************/
-  showList(){
-    if(this.state.newUser)
-    {
-      return(<Text>NO DATA</Text>)
-    }
-    else{
-      return(
-        <ScrollView >
-          <List>
-          {
-            this.state.weightList.map((k, i) => (
-              <ListItem
-                hideChevron
-                key={i}
-                title={k['date']}
-                rightTitle={k['weight'] + " " + k['diff']}
-                rightIcon={this.weightIcon(parseInt(k['diff']))}
-                leftIcon={this.weightIcon(parseInt(k['diff']))}
-              />
-            ))
-          }
-          </List>
-        </ScrollView>
-      )
-    }
-  }
 
   render() {
     return (
@@ -256,13 +164,12 @@ export class WeightHomeScreen extends React.Component{
         {/*BODY*/}
         <View style={Weight.body}>
           <Swiper>
-            {this.showGraph()}
-            {this.showList()}
+
+            {WeightGraph.showGraph(this.state.weightArray, this.state.newUser)}
+            {WeightList.showList(this.state.weightArray, this.state.newUser)}
           </Swiper>
         </View>
         {/********************************************************************/}
-
-
 
       </View>
 

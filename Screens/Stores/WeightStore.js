@@ -81,7 +81,7 @@ class  WeightStore{
     await this.storageSetHandler('@WeightList', JSON.stringify(listObj))
     await this.storageSetHandler('@RunningWeight', runValue.toString())
   }
-  async updateAsync(listObj, runValue, targetValue){
+  async updateAsyncNewUser(listObj, runValue, targetValue){
     await this.storageSetHandler('@WeightList', JSON.stringify(listObj))
     await this.storageSetHandler('@RunningWeight', runValue.toString())
     await this.storageSetHandler('@TargetWeight', targetValue.toString())
