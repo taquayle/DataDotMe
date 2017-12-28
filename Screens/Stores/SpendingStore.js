@@ -1,32 +1,29 @@
 // Author: Tyler Quayle
-// Date: 12/13/2017
-// File: Stores/WeightStore
-// Desc: Store for holding user entered weight
+// Date: December 27, 2018
+// File: Stores/SpendingStore.js
+// Desc: Store to hold the Spending information
 
 import {observable } from "mobx"
 import {AsyncStorage} from "react-native"
 
-
-class  WeightStore{
-  @observable weightList = null
-  @observable runningWeight = null
-  @observable targetWeight = null
+class  SpendingStore{
+  @observable spendingHistory = null
+  @observable spendingCategory = null
 
   /****************************************************************************/
 
   /****************************************************************************/
   resetData(){
-    this.setWeightList(null)
-    this.setRunningWeight(null)
+    this.setSpendingHistory(null)
+    this.setSpendingCategory(null)
   }
 
   /****************************************************************************/
 
   /****************************************************************************/
   async deleteData(){
-    await this.storageDeleteHandler('@WeightList')
-    await this.storageDeleteHandler('@RunningWeight')
-    await this.storageDeleteHandler('@TargetWeight')
+    await this.storageDeleteHandler('@SpendingHistory')
+    await this.storageDeleteHandler('@SpendingCategory')
   }
 
   /****************************************************************************/
@@ -46,11 +43,10 @@ class  WeightStore{
 
   /****************************************************************************/
   async loadAsync(){
-    console.log("Starting WeightStore Retrieval...")
-    this.setWeightList(JSON.parse(await this.storageGetHandler('@WeightList')))
-    this.setRunningWeight(parseInt(await this.storageGetHandler('@RunningWeight')))
-    this.setTargetWeight(parseInt(await this.storageGetHandler('@TargetWeight')))
-    console.log("Ending WeightStore Retrieval...")
+    console.log("Starting SpendingStore Retrieval...")
+    this.setSpendingHistory(JSON.parse(await this.storageGetHandler('@SpendingHistory')))
+    this.setSpendingCategory(JSON.parse(await this.storageGetHandler('@SpendingCategory')))
+    console.log("Ending SpendingStore Retrieval...")
   }
 
   /****************************************************************************/
@@ -77,15 +73,12 @@ class  WeightStore{
   /****************************************************************************/
 
   /****************************************************************************/
-  async updateAsync(listObj, runValue){
-    await this.storageSetHandler('@WeightList', JSON.stringify(listObj))
-    await this.storageSetHandler('@RunningWeight', runValue.toString())
+  async updateAsync(historyObj, categoryObj){
+    console.log("Starting SpendingStore Retrieval...")
+    await this.storageSetHandler('@SpendingHistory', JSON.stringify(historyObj))
+    await this.storageSetHandler('@SpendingCategory', JSON.stringify(categoryObj))
   }
-  async updateAsync(listObj, runValue, targetValue){
-    await this.storageSetHandler('@WeightList', JSON.stringify(listObj))
-    await this.storageSetHandler('@RunningWeight', runValue.toString())
-    await this.storageSetHandler('@TargetWeight', targetValue.toString())
-  }
+
   /****************************************************************************/
 
   /****************************************************************************/
@@ -97,25 +90,20 @@ class  WeightStore{
       console.log("Error while setting " + key + ": " + e)
     }
   }
-  /****************************************************************************/
-  setWeightList(arrObj){ this.weightList = arrObj}
-
-  getWeightList(){ return this.weightList }
-  /****************************************************************************/
 
   /****************************************************************************/
-  setRunningWeight(obj){ this.runningWeight = obj}
+  setSpendingHistory(arrObj){ this.spendingHistory = arrObj}
 
-  getRunningWeight(){ return this.runningWeight }
+  getSpendingHistory(){ return this.spendingHistory }
   /****************************************************************************/
 
   /****************************************************************************/
-  setTargetWeight(obj){ this.targetWeight = obj}
+  setSpendingCategory(arrObj){ this.spendingCategory = arrObj}
 
-  getTargetWeight(){ return this.targetWeight }
+  getSpendingCategory(){ return this.spendingCategory }
   /****************************************************************************/
 }
 
-var UserWeight = new WeightStore()
+var UserSpending = new SpendingStore()
 
-export default UserWeight
+export default UserSpending

@@ -12,8 +12,8 @@ import { HomeScreen } from '../Home';
 import { SplashScreen } from '../Splash';
 import { WorkoutHomeScreen} from '../Recorder/Workout/WorkoutHome'
   import { WorkoutTransitionScreen } from '../Recorder/Workout/WorkoutTransition'
-import { FinanceHomeScreen} from '../Recorder/Finance/FinanceHome'
-  import { FinanceTransitionScreen } from '../Recorder/Finance/FinanceTransition'
+import { SpendingHomeScreen} from '../Recorder/Spending/SpendingHome'
+  import { SpendingTransitionScreen } from '../Recorder/Spending/SpendingTransition'
 import { WeightHomeScreen } from '../Recorder/Weight/WeightHome'
   import { WeightTransitionScreen } from '../Recorder/Weight/WeightTransition'
   import { WeightListScreen } from '../Recorder/Weight/WeightList'
@@ -27,8 +27,8 @@ export const Router = StackNavigator({
   Home: { screen: HomeScreen, },
   FoodHome: { screen: FoodHomeScreen, },
     FoodTrans: {screen: FoodTransitionScreen, },
-  FinanceHome: { screen: FinanceHomeScreen, },
-    FinanceTrans: { screen: FinanceTransitionScreen, },
+  SpendingHome: { screen: SpendingHomeScreen, },
+    SpendingTrans: { screen: SpendingTransitionScreen, },
   WeightHome: { screen: WeightHomeScreen, },
     WeightTrans: {screen: WeightTransitionScreen, },
     WeightList: { screen: WeightListScreen, },

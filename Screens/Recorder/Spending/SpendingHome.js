@@ -1,7 +1,7 @@
 // Author: Tyler Quayle
-// File. Finance/FinanceHome.js
+// File. Spending/SpendingHome.js
 // Date: December 5, 2017
-// Desc: Homescreen for the finance recorder
+// Desc: Homescreen for the Spending recorder
 
 
 import React from 'react';
@@ -10,7 +10,7 @@ import { Text, View, StyleSheet, Image, BackHandler, Platform} from 'react-nativ
 import { Button, SideMenu, List, ListItem, Icon, Header, Divider } from 'react-native-elements'
 
 
-export class FinanceHomeScreen extends React.Component{
+export class SpendingHomeScreen extends React.Component{
   componentWillMount(){
     console.log("Current Screen: " + this.props.navigation.state.routeName)
   }

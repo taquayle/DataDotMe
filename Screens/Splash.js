@@ -3,13 +3,21 @@
 // Date: December 4, 2017
 // Desc: Simple SplashScreen that will send users to homescreen
 
-import React from 'react';
+/******************************************************************************/
+// React and Addons
+import React from 'react'
 import { View, StyleSheet, Image, Text, AsyncStorage} from 'react-native'
-import Style from './Styles/Main'
-import UserWeight from './Stores/WeightStore'
 import { StackNavigator } from 'react-navigation'
+import { Router } from './Navigate/Router'
 
+/******************************************************************************/
+// Stores
+import UserWeight from './Stores/WeightStore'
+import SpendingStore from './Stores/SpendingStore'
 
+/******************************************************************************/
+// Styles
+import Style from './Styles/Main'
 
 export class SplashScreen extends React.Component {
   componentWillMount(){
@@ -28,7 +36,8 @@ export class SplashScreen extends React.Component {
     console.log("Attempting to load Async Storage")
 
     await UserWeight.loadAsync()
-    
+    await SpendingStore.loadAsync()
+
     console.log("Done loading Async Storage")
     const { navigate } = this.props.navigation
     navigate('Home')

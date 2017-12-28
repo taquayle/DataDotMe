@@ -5,7 +5,7 @@
 
 
 import React from 'react';
-import { Router} from './Navigate/Router'
+import { Router } from './Navigate/Router'
 import Style  from './Styles/Main'
 import UserWeight from './Stores/WeightStore'
 import { Text, View, StyleSheet, Image, BackHandler, Platform, AsyncStorage} from 'react-native'
@@ -80,7 +80,6 @@ export class HomeScreen extends React.Component{
             </View>
 
             <View style={Style.col}>
-
                 <View style={Style.cell}>
                   <Button
                     large
@@ -88,7 +87,7 @@ export class HomeScreen extends React.Component{
                     buttonStyle={{ borderRadius: 40, marginVertical: 10}}
                     textStyle={{textAlign: 'center'}}
                     title={`Money`}
-                    onPress={() => navigate('FinanceTrans')}
+                    onPress={() => navigate('SpendingTrans')}
                   />
                 </View>
 

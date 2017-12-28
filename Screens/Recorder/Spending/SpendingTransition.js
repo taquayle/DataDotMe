@@ -1,7 +1,7 @@
 // Author: Tyler Quayle
 // Date: 12.20.2017
-// File: Finance/FinanceTransition
-// Desc: Transition screen from home to Finance
+// File: Spending/SpendingTransition
+// Desc: Transition screen from home to Spending
 
 /******************************************************************************/
 // React & Add-ons
@@ -19,11 +19,11 @@ import Style  from '../../Styles/Main'
 /******************************************************************************/
 // Stores
 
-export class FinanceTransitionScreen extends React.Component {
+export class SpendingTransitionScreen extends React.Component {
   componentWillMount(){
     console.log("Current Screen: " + this.props.navigation.state.routeName)
     const { navigate } = this.props.navigation;
-    navigate('FinanceHome')
+    navigate('SpendingHome')
   }
 
   constructor(props) {
@@ -45,7 +45,7 @@ export class FinanceTransitionScreen extends React.Component {
         {/********************************************************************/}
         {/*BODY*/}
         <View style={Style.body}>
-          <Image source={require('../../Images/Finance.png')} style={Style.logo}/>
+          <Image source={require('../../Images/Spending.png')} style={Style.logo}/>
         </View>
         {/********************************************************************/}
 
