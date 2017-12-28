@@ -15,6 +15,13 @@ export class FoodHomeScreen extends React.Component{
     console.log("Current Screen: " + this.props.navigation.state.routeName)
   }
 
+  componentDidMount(){
+    BackHandler.addEventListener('hardwareBackPress', function() {
+      this.props.navigation.navigate('Home');
+      return true //Tell react-navigation that back button is handled
+    }.bind(this));
+  }
+
   constructor(props){
     super(props)
   }

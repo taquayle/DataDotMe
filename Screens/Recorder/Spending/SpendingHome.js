@@ -29,7 +29,10 @@ export class SpendingHomeScreen extends React.Component{
   }
 
   componentDidMount(){
-
+    BackHandler.addEventListener('hardwareBackPress', function() {
+      this.props.navigation.navigate('Home');
+      return true //Tell react-navigation that back button is handled
+    }.bind(this));
   }
 
   constructor(props){

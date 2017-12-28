@@ -18,7 +18,7 @@ import Style  from '../../Styles/Main'
 
 /******************************************************************************/
 // Stores
-import UserSpending from '../../Stores/SpendingStore'
+
 
 export class WorkoutTransitionScreen extends React.Component {
   componentWillMount(){

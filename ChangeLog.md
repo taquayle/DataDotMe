@@ -1,4 +1,6 @@
 # V 0.1
+### Version containing skeletal framework for App
+
 ## 12.1.2017
 ### * Created Default App
 ### * Added react-navigation
@@ -64,3 +66,5 @@
 ## 12.27.2017
 ### * Changed 'finance' to 'spending' to better emphasize what it tracks
 ### * Added spending store.
+### * Transition Logic for spending updated
+### * Added Backhandlers 
