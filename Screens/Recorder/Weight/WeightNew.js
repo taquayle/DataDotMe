@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
-// File. Weight/WeightNew.js
 // Date: December 20, 2017
+// File: Weight/WeightNew.js
 // Desc: Screen that will popup if the user is new to ask for intial details,
 //
 

@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
-// File. FoodHome.js
 // Date: December 5, 2017
+// File: Food/FoodHome.js
 // Desc: Workout Home screen for Data.me app
 
 

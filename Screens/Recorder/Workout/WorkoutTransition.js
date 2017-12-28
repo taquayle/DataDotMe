@@ -1,5 +1,5 @@
 // Author: Tyler Quayle
-// Date: 12.20.2017
+// Date: December 20, 2017
 // File: Workout/WorkoutTransition
 // Desc: Transition screen from home to Food
 
@@ -18,12 +18,13 @@ import Style  from '../../Styles/Main'
 
 /******************************************************************************/
 // Stores
+import UserSpending from '../../Stores/SpendingStore'
 
 export class WorkoutTransitionScreen extends React.Component {
   componentWillMount(){
     console.log("Current Screen: " + this.props.navigation.state.routeName)
     const { navigate } = this.props.navigation;
-    navigate('FoodHome')
+    navigate('WorkHome')
   }
 
   constructor(props) {

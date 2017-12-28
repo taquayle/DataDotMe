@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
-// File. WeightHome.js
 // Date: December 5, 2017
+// File: Weight/WeightHome.js
 // Desc: Homescreen for the weight recorder
 
 /******************************************************************************/

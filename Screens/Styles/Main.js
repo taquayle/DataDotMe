@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
-// File. Style.js
 // Date: December 4, 2017
+// File: Styles/Style.js
 // Desc: Default style sheet for the app.
 
 import { StyleSheet } from 'react-native'

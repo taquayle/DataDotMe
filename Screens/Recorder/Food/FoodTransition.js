@@ -1,5 +1,5 @@
 // Author: Tyler Quayle
-// Date: 12.20.2017
+// Date: December 20, 2017
 // File: Food/FoodTransition
 // Desc: Transition screen from home to Food
 

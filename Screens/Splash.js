@@ -1,12 +1,12 @@
 // Author: Tyler Quayle
-// File. Splash.js
 // Date: December 4, 2017
+// File: Splash.js
 // Desc: Simple SplashScreen that will send users to homescreen
 
 /******************************************************************************/
 // React and Addons
 import React from 'react'
-import { View, StyleSheet, Image, Text, AsyncStorage} from 'react-native'
+import { View, StyleSheet, Image, Text, AsyncStorage, Platform} from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import { Router } from './Navigate/Router'
 
@@ -18,6 +18,15 @@ import SpendingStore from './Stores/SpendingStore'
 /******************************************************************************/
 // Styles
 import Style from './Styles/Main'
+
+
+const androidBuild = 'V 0.1'
+const iosBuild = 'V 0.1'
+
+const build = Platform.select({
+  ios: 'iOS Build: ' + iosBuild,
+  android: 'Android Build: ' + androidBuild
+});
 
 export class SplashScreen extends React.Component {
   componentWillMount(){
@@ -40,7 +49,9 @@ export class SplashScreen extends React.Component {
 
     console.log("Done loading Async Storage")
     const { navigate } = this.props.navigation
-    navigate('Home')
+    setTimeout(() => { // Execute ONCE
+        this.setState(previousState => {navigate('Home')});
+    }, 1000); //Milliseconds before switch
   }
 
 
@@ -63,6 +74,7 @@ export class SplashScreen extends React.Component {
         {/*BODY*/}
         <View style={Style.body}>
           <Image source={require('./Images/Logo.png')} style={Style.logo}/>
+          <Text style={Style.text}>{build}</Text>
         </View>
         {/********************************************************************/}
 

@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
-// File. WorkHome.js
 // Date: December 5, 2017
+// File: Workout/WorkHome.js
 // Desc: Workout Home screen for Data.me app
 
 

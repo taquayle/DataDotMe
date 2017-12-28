@@ -1,5 +1,5 @@
 // Author: Tyler Quayle
-// Date: 12.20.2017
+// Date: December 20, 2017
 // File: Spending/SpendingTransition
 // Desc: Transition screen from home to Spending
 
@@ -23,7 +23,10 @@ export class SpendingTransitionScreen extends React.Component {
   componentWillMount(){
     console.log("Current Screen: " + this.props.navigation.state.routeName)
     const { navigate } = this.props.navigation;
-    navigate('SpendingHome')
+    if(UserSpending.getSpendingCategory() == null){ //User has no info yet
+      UserSpending.defaultValues()
+      navigate('SpendingHome')
+    }
   }
 
   constructor(props) {
@@ -55,7 +58,6 @@ export class SpendingTransitionScreen extends React.Component {
 
         </View>
         {/********************************************************************/}
-
       </View>
     );
   }

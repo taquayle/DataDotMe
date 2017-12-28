@@ -6,9 +6,16 @@
 import {observable } from "mobx"
 import {AsyncStorage} from "react-native"
 
+const defaultCategories = ([
+                    {'Category': 'Food', 'Total': 10, 'Color': '#00FF00'},
+                    {'Category': 'Gas', 'Total': 20, 'Color': '#FFFF00'},
+                    {'Category': 'Misc', 'Total': 30, 'Color': '#0000FF'},
+                    ])
+
 class  SpendingStore{
   @observable spendingHistory = null
   @observable spendingCategory = null
+
 
   /****************************************************************************/
 
@@ -16,6 +23,13 @@ class  SpendingStore{
   resetData(){
     this.setSpendingHistory(null)
     this.setSpendingCategory(null)
+  }
+
+  /****************************************************************************/
+
+  /****************************************************************************/
+  defaultValues(){
+    this.setSpendingCategory(defaultCategories)
   }
 
   /****************************************************************************/

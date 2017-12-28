@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
 // File: Styles/Weight.js
-// Date: 12/7/2017
+// Date: December 7, 2017
 // Desc: Style guide for anything in the 'weight' sub-app.
 
 import { StyleSheet } from 'react-native'

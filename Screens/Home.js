@@ -1,6 +1,6 @@
 // Author: Tyler Quayle
-// File. Home.js
 // Date: December 4, 2017
+// File: Home.js
 // Desc: Home screen for Data.me app
 
 

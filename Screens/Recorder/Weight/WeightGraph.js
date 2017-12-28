@@ -5,7 +5,7 @@
 /******************************************************************************/
 /******************************************************************************/
 // Author: Tyler Quayle
-// Date: 12/13/2017
+// Date: December 13, 2017
 // File: Weight/WeightGraph.js
 // Desc: Screen shown when swiped right twice, show a graph
 
